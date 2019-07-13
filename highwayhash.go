@@ -2,8 +2,10 @@ package highwayhash
 
 import (
 	"crypto/rand"
+	"hash"
 
 	"github.com/minio/highwayhash"
+	"github.com/u6du/ex"
 )
 
 type Key []byte
@@ -15,6 +17,12 @@ func init() {
 	Zero = make([]byte, 32)
 	Rand = make([]byte, 32)
 	rand.Read(Rand)
+}
+
+func (k key) New() (h hash.Hash) {
+	h, err := highwayhash.New(k)
+	ex.Panic(err)
+	return h
 }
 
 func (k Key) Sum64(data []byte) uint64 {
