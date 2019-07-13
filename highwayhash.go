@@ -6,21 +6,25 @@ import (
 	"github.com/minio/highwayhash"
 )
 
-var Secret []byte
+type Key []byte
+
+var Secret Key
+var Zero Key
 
 func init() {
+	Zero = make([]byte, 32)
 	Secret = make([]byte, 32)
 	rand.Read(Secret)
 }
 
-func Sum64(data []byte) uint64 {
-	return highwayhash.Sum64(data, Secret)
+func (k Key) Sum64(data []byte) uint64 {
+	return highwayhash.Sum64(data, k)
 }
 
-func Sum128(data []byte) [16]byte {
-	return highwayhash.Sum128(data, Secret)
+func (k Key) Sum128(data []byte) [16]byte {
+	return highwayhash.Sum128(data, k)
 }
 
-func Sum(data []byte) [32]byte {
-	return highwayhash.Sum(data, Secret)
+func (k Key) Sum(data []byte) [32]byte {
+	return highwayhash.Sum(data, k)
 }
