@@ -20,3 +20,7 @@ func Sum64(data []byte) uint64 {
 func Sum128(data []byte) [16]byte {
 	return highwayhash.Sum128(data, Secret)
 }
+
+func Sum(data []byte) [32]byte {
+	return highwayhash.Sum(data, Secret)
+}
