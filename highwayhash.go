@@ -19,7 +19,7 @@ func init() {
 	rand.Read(Rand)
 }
 
-func (k key) New() (h hash.Hash) {
+func (k Key) New() (h hash.Hash) {
 	h, err := highwayhash.New(k)
 	ex.Panic(err)
 	return h
