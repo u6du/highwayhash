@@ -8,13 +8,13 @@ import (
 
 type Key []byte
 
-var Secret Key
+var Rand Key
 var Zero Key
 
 func init() {
 	Zero = make([]byte, 32)
-	Secret = make([]byte, 32)
-	rand.Read(Secret)
+	Rand = make([]byte, 32)
+	rand.Read(Rand)
 }
 
 func (k Key) Sum64(data []byte) uint64 {
