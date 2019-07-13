@@ -7,5 +7,6 @@ import (
 func TestHighwayhash(t *testing.T) {
 	t.Logf("Sum64 a %d", Sum64([]byte("a")))
 	t.Logf("Sum64 a %d", Sum64([]byte("a")))
-
+	t.Logf("Sum128 a %x", Sum128([]byte("a")))
+	t.Logf("Sum128 a %x", Sum128([]byte("a")))
 }
